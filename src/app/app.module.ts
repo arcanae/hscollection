@@ -10,6 +10,7 @@ import { NavComponent } from './nav/nav.component';
 import { UserInventoryComponent } from './user-inventory/user-inventory.component';
 import { UserProfilComponent } from './user-profil/user-profil.component';
 import { ReactiveFormsModule, FormsModule, FormGroup } from '@angular/forms';
+import { UserService } from './service/user/user.service';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,7 @@ import { ReactiveFormsModule, FormsModule, FormGroup } from '@angular/forms';
     ReactiveFormsModule,
     FormsModule
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

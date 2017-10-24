@@ -1,13 +1,16 @@
-<form [formGroup]="loginForm">
-    <label for="name">Name</label>
-    <input required type="text" [formControl]="name" />
-    <!-- <div $ngIf="name.dirty && !login.valid">
+<div>
+    <h1 class="titleForm">Login</h1>
+    <form (ngSubmit)="onSubmit()" [formGroup]="loginForm">
+        <label for="name">Name</label>
+        <input required type="text" [formControl]="name" />
+        <!-- <div $ngIf="name.dirty && !login.valid">
       <p *ngIf="name.errors">Name Invalid, more than 3.</p>
   </div> -->
-    <label for="password">Password</label>
-    <input required type="text" [formControl]="password" />
-    <!-- <div $ngIf="name.dirty && !login.valid">
+        <label for="password">Password</label>
+        <input required type="text" [formControl]="password" />
+        <!-- <div $ngIf="name.dirty && !login.valid">
       <p *ngIf="password.errors">Password Invalid, more than 6.</p>
   </div> -->
-    <button type="submit">Submit</button>
-</form>
+        <button ng-submit="onSubmit()" type="submit">Submit</button>
+    </form>
+</div>

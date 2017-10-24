@@ -1,22 +1,21 @@
 <div>
-    <h1 class="titleForm">Inscription</h1>
-    <form [formGroup]="registForm">
-        <div>
-            <label for="name">Name</label>
-            <input required type="text" [formControl]="name" />
-            <!-- <div $ngIf="name.dirty && !login.valid">
-                <p *ngIf="name.errors">Name Invalid, more than 3.</p>
-            </div> -->
-            <label for="password">Password</label>
-            <input required type="text" [formControl]="password" />
-            <!-- <div $ngIf="name.dirty && !login.valid">
-                <p *ngIf="password.errors">Password Invalid, more than 6.</p>
-            </div> -->
-            <label for="confirmPassword">confirm Password</label>
-            <input required type="text" [formControl]="confirmPassword" />
-            <!-- <div $ngIf="name.dirty && !login.valid">
-                <p *ngIf="confirmPassword.errors">confirme password Invalid, not same password.</p>
-            </div> -->
+    <h1 class="titleForm">
+        Inscription</h1>
+    <form (ngSubmit)="onSubmit()" [formGroup]="registForm">
+        <label for="name">Name</label>
+        <input required type="text" [formControl]="name" />
+        <div *ngIf="name.dirty && name.invalid">
+            <p *ngIf="name.errors">Name Invalid, more than 3.</p>
+        </div>
+        <label for="password">Password</label>
+        <input required type="text" [formControl]="password" />
+        <div *ngIf="password.dirty && password.invalid">
+            <p *ngIf="password.errors">Password Invalid, more than 6.</p>
+        </div>
+        <label for="confirmPassword">confirm Password</label>
+        <input required type="text" [formControl]="confirmPassword" />
+        <div *ngIf="confirmPassword.dirty && confirmPassword.invalid">
+            <p *ngIf="confirmPassword.errors">confirme password Invalid, not same password.</p>
         </div>
         <button type="submit">Submit</button>
     </form>
