@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormsModule, FormBuilder, FormGroup, ReactiveFormsModule, FormControl, Validators } from '@angular/forms';
+import { FormsModule, FormBuilder, FormGroup, ReactiveFormsModule, FormControl, Validators, ValidatorFn } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { User } from '../class/user';
 import { UserService } from '../service/user/user.service';
@@ -32,11 +32,10 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
   }
   onSubmit(){
-
     let user = new User(this.registForm.value.name, this.registForm.value.password);
     this.userService.create(user).subscribe();
   }
-  matchingPasswords(passwordKey, confirmPasswordKey){
+  matchingPasswords(passwordKey, confirmPasswordKey): ValidatorFn{
     return (group: FormGroup): {[key: string]: any} => {
       let password = group.controls[passwordKey];
       let confirmPassword = group.controls[confirmPasswordKey];

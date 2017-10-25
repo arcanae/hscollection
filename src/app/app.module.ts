@@ -11,6 +11,7 @@ import { UserInventoryComponent } from './user-inventory/user-inventory.componen
 import { UserProfilComponent } from './user-profil/user-profil.component';
 import { ReactiveFormsModule, FormsModule, FormGroup } from '@angular/forms';
 import { UserService } from './service/user/user.service';
+import { AuthService } from './service/auth/auth.service';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,7 @@ import { UserService } from './service/user/user.service';
     ReactiveFormsModule,
     FormsModule
   ],
-  providers: [UserService],
+  providers: [UserService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

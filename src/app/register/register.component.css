@@ -5,10 +5,22 @@ form {
     flex-direction: column;
 }
 
-div {
+.bloc {
     margin: 10%;
+}
+
+div {
+    margin: 0px;
+    padding: 0px;
 }
 
 button {
     margin-top: 2%;
+}
+
+p {
+    font-size: 0.8em;
+    margin: 0px;
+    padding: 0px;
+    color: red;
 }
