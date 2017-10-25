@@ -12,7 +12,7 @@ export class UserService {
   constructor(private http: HttpClient) { }
     
   getAll() {
-    return this.http.get(this.urlApi+'/').map((response: Response) => response.json());
+    return this.http.get<User[]>(this.urlApi+'/');
   }
 
 getById(id: number) {
@@ -21,7 +21,7 @@ getById(id: number) {
 
 create(user: User) {
     console.log(user);
-    return this.http.post(this.urlApi+'/new', user).map((response: Response) => response.json());
+    return this.http.post<User>(this.urlApi+'/new', user);
 }
 
 update(user: User) {
