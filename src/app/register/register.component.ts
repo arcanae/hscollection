@@ -33,7 +33,11 @@ export class RegisterComponent implements OnInit {
   }
   onSubmit(){
     let user = new User(this.registForm.value.name, this.registForm.value.password);
-    this.userService.create(user).subscribe();
+    if(this.registForm.valid){
+      this.userService.create(user).subscribe();
+    }else {
+      console.log('form not valid');
+    }
   }
   matchingPasswords(passwordKey, confirmPasswordKey): ValidatorFn{
     return (group: FormGroup): {[key: string]: any} => {
