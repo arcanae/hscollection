@@ -12,6 +12,7 @@ import { UserProfilComponent } from './user-profil/user-profil.component';
 import { ReactiveFormsModule, FormsModule, FormGroup } from '@angular/forms';
 import { UserService } from './service/user/user.service';
 import { AuthService } from './service/auth/auth.service';
+import { UserInformationsComponent } from './user-informations/user-informations.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { AuthService } from './service/auth/auth.service';
     RegisterComponent,
     NavComponent,
     UserInventoryComponent,
-    UserProfilComponent
+    UserProfilComponent,
+    UserInformationsComponent
   ],
   imports: [
     BrowserModule,
