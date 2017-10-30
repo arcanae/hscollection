@@ -19,8 +19,8 @@ export class UserService {
         return this.http.get('' + id);
     }
 
-    ifConnected(token: string) {
-        return this.http.post<string>(this.urlApi+'/token/', token);
+    userByToken(token: string) {
+        return this.http.post<User>(this.urlApi+'/token/', token);
     }
 
     create(user: User) {
