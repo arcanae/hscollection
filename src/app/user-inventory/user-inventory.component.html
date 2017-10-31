@@ -1,5 +1,5 @@
 <div class="blocCardsCollect">
-    <ul *ngFor="card as cards">
-        <li></li>
+    <ul *ngIf="user !== null">
+        <li *ngFor="let cards of user.inventory">{{cards}}</li>
     </ul>
 </div>

@@ -12,6 +12,10 @@ import { UserProfilComponent } from './user-profil/user-profil.component';
 import { ReactiveFormsModule, FormsModule, FormGroup } from '@angular/forms';
 import { UserService } from './service/user/user.service';
 import { AuthService } from './service/auth/auth.service';
+import { RouterModule } from '@angular/router';
+import { appRoutes } from './app.routes';
+import { AccueilComponent } from './accueil/accueil.component';
+
 
 @NgModule({
   declarations: [
@@ -22,13 +26,15 @@ import { AuthService } from './service/auth/auth.service';
     RegisterComponent,
     NavComponent,
     UserInventoryComponent,
-    UserProfilComponent
+    UserProfilComponent,
+    AccueilComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [UserService, AuthService],
   bootstrap: [AppComponent]

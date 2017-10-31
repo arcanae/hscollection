@@ -18,12 +18,16 @@ export class AuthService {
       if (response.token) {
         localStorage.setItem('currentUser', JSON.stringify(response.token));
       }
+      this.user.next(response);
+      console.log('User pousser dans observable');
       return response;
     });
   }
   
   logout() {
     localStorage.removeItem('currentUser');
+    this.user.next(null);
+    console.log('User deconnecter');
   }
 
   init() {
@@ -31,19 +35,22 @@ export class AuthService {
     if(this.token) {
       let expiration = parseInt(this.token.split('|')[1]);
       if(expiration > new Date().getTime()){
-        this.getByToken(this.token).subscribe((user) =>{
-          this.user.next(user);
-        }
-        );
+        localStorage.removeItem('currentUser');
+        console.log('Item remove (expiration)');
+      }else{
+        this.getByToken(this.token).subscribe( user => this.user.next(user) );
       }
     }
   }
   getByToken(token:string):Observable<User> {
+    if(token)
     return this.http.get<User[]>(this.urlApi+'?token='+token)
     .map((users) => {
       if(users.length === 1) {
+        console.log(users[0]);
         return users[0];
       }
+      console.log('pas de response server');
       return null
     });
   }
