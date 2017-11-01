@@ -15,6 +15,7 @@ import { AuthService } from './service/auth/auth.service';
 import { RouterModule } from '@angular/router';
 import { appRoutes } from './app.routes';
 import { AccueilComponent } from './accueil/accueil.component';
+import { CoreComponent } from './core/core.component';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { AccueilComponent } from './accueil/accueil.component';
     UserInventoryComponent,
     UserProfilComponent,
     AccueilComponent,
+    CoreComponent,
   ],
   imports: [
     BrowserModule,

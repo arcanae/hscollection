@@ -37,9 +37,8 @@ export class LoginComponent implements OnInit {
     if(this.loginForm.valid){
       this.AuthService.login(this.loginForm.value.name,  this.loginForm.value.password).subscribe();
       console.log('onSubmit : ok');
-
     }else {
-    console.log('onSubmit : Nok');
+      console.log('onSubmit : Nok');
     }  
   }
 }

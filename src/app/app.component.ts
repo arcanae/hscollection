@@ -8,7 +8,4 @@ import { User } from './class/user';
 })
 export class AppComponent {
   title = 'app';
-  user:User;
-
-  
 }

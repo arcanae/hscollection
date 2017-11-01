@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginComponent } from '../login/login.component';
 import { RegisterComponent } from '../register/register.component';
+import { AuthService } from '../service/auth/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-accueil',
@@ -9,7 +11,7 @@ import { RegisterComponent } from '../register/register.component';
 })
 export class AccueilComponent implements OnInit {
 
-  constructor() { }
+  constructor(private auth:AuthService, private rout:Router) { }
 
   ngOnInit() {
   }

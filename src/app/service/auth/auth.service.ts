@@ -7,19 +7,20 @@ import { BehaviorSubject } from 'rxjs';
 
 @Injectable()
 export class AuthService {
-  urlApi = 'http://localhost:8000/';
+  urlApi = 'http://localhost:8000/user/';
   token:string;
   user:BehaviorSubject<User> = new BehaviorSubject(null);
   
   constructor(private http: HttpClient) { this.init() }
 
   login(name: string, password: string) {
-    return this.http.post<User>(this.urlApi+'user/login',{ name: name, password: password }).map((response: User) => {
+    return this.http.post<User>(this.urlApi+'login',{ name: name, password: password }).map((response: User) => {
       if (response.token) {
-        localStorage.setItem('currentUser', JSON.stringify(response.token));
+        localStorage.setItem('currentUser', response.token);
       }
       this.user.next(response);
       console.log('User pousser dans observable');
+      console.log(this.user)
       return response;
     });
   }
@@ -31,7 +32,7 @@ export class AuthService {
   }
 
   init() {
-    this.token = localStorage.getItem('token');
+    this.token = localStorage.getItem('currentUser');
     if(this.token) {
       let expiration = parseInt(this.token.split('|')[1]);
       if(expiration > new Date().getTime()){
@@ -44,10 +45,10 @@ export class AuthService {
   }
   getByToken(token:string):Observable<User> {
     if(token)
-    return this.http.get<User[]>(this.urlApi+'?token='+token)
+    return this.http.get<User[]>(this.urlApi+'token/'+token)
     .map((users) => {
       if(users.length === 1) {
-        console.log(users[0]);
+        console.log(users);
         return users[0];
       }
       console.log('pas de response server');
