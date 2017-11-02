@@ -13,6 +13,7 @@ export class HeaderComponent implements OnInit {
   constructor(private auth:AuthService) { }
 
   ngOnInit() {
+    this.auth.getByToken(localStorage.getItem('currentUser'));
     this.auth.user.subscribe((user)=>
       this.user = user
     );

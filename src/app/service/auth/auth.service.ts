@@ -48,7 +48,7 @@ export class AuthService {
     return this.http.get<User[]>(this.urlApi+'token/'+token)
     .map((users) => {
       if(users.length === 1) {
-        console.log(users);
+        this.user.next(users[0]);
         return users[0];
       }
       console.log('pas de response server');
